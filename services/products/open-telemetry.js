@@ -24,7 +24,7 @@ registerInstrumentations({
 const provider = new NodeTracerProvider({
   resource: Resource.default().merge(new Resource({
     // Replace with any string to identify this service in your system
-    "service.name": "products",
+    "service.name": "fed-products:4003",
   })),
 });
 
@@ -38,12 +38,12 @@ provider.addSpanProcessor(
 // Configure an exporter that pushes all traces to Zipkin
 // (This assumes Zipkin is running on localhost at the 
 // default port of 9411)
-const zipkinExporter = new ZipkinExporter({
-  // url: set_this_if_not_running_zipkin_locally
-});
-provider.addSpanProcessor(
-  new SimpleSpanProcessor(zipkinExporter)
-);
+// const zipkinExporter = new ZipkinExporter({
+//   // url: set_this_if_not_running_zipkin_locally
+// });
+// provider.addSpanProcessor(
+//   new SimpleSpanProcessor(zipkinExporter)
+// );
 
 // Register the provider to begin tracing
 provider.register();
