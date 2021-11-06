@@ -3,10 +3,10 @@
   "main": "gateway.js",
   "scripts": {
     "start-gateway": "nodemon gateway.js",
-    "start-service-accounts": "nodemon services/accounts/index.js",
-    "start-service-reviews": "nodemon services/reviews/index.js",
-    "start-service-products": "nodemon services/products/index.js",
-    "start-service-inventory": "nodemon services/inventory/index.js",
+    "start-service-accounts": "cd services/accounts && nodemon index.js",
+    "start-service-reviews": "cd services/reviews && nodemon index.js",
+    "start-service-products": "cd services/products && nodemon index.js",
+    "start-service-inventory": "cd services/inventory && nodemon index.js",
     "start-services": "concurrently \"npm:start-service-*\"",
     "postinstall": "lerna bootstrap"
   },
@@ -19,6 +19,7 @@
     "@apollo/gateway": "latest",
     "@opentelemetry/api": "^1.0.3",
     "@opentelemetry/core": "^0.22.0",
+    "@opentelemetry/exporter-zipkin": "^0.22.0",
     "@opentelemetry/instrumentation-express": "^0.22.0",
     "@opentelemetry/instrumentation-http": "^0.22.0",
     "@opentelemetry/node": "^0.22.0",

@@ -7,6 +7,7 @@ const { SimpleSpanProcessor, ConsoleSpanExporter } = require ("@opentelemetry/tr
 const { Resource } = require('@opentelemetry/resources');
 // **DELETE IF SETTING UP A GATEWAY, UNCOMMENT OTHERWISE**
 // const { GraphQLInstrumentation } = require ('@opentelemetry/instrumentation-graphql');
+const { ZipkinExporter } = require("@opentelemetry/exporter-zipkin");
 
 // Register server-related instrumentation
 registerInstrumentations({
@@ -31,6 +32,16 @@ const provider = new NodeTracerProvider({
 const consoleExporter = new ConsoleSpanExporter();
 provider.addSpanProcessor(
   new SimpleSpanProcessor(consoleExporter)
+);
+
+// Configure an exporter that pushes all traces to Zipkin
+// (This assumes Zipkin is running on localhost at the 
+// default port of 9411)
+const zipkinExporter = new ZipkinExporter({
+  // url: set_this_if_not_running_zipkin_locally
+});
+provider.addSpanProcessor(
+  new SimpleSpanProcessor(zipkinExporter)
 );
 
 // Register the provider to begin tracing
