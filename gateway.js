@@ -1,3 +1,5 @@
+require('./open-telemetry')
+
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
 
@@ -29,6 +31,8 @@ const gateway = new ApolloGateway({
 
     // Subscriptions are unsupported but planned for a future Gateway version.
     subscriptions: false,
+
+    debug: true,
   });
 
   server.listen().then(({ url }) => {

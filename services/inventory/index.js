@@ -1,3 +1,5 @@
+require('./open-telemetry')
+
 const { ApolloServer, gql } = require("apollo-server");
 const { buildFederatedSchema } = require("@apollo/federation");
 
@@ -34,7 +36,8 @@ const server = new ApolloServer({
       typeDefs,
       resolvers
     }
-  ])
+  ]),
+  debug: true,
 });
 
 server.listen({ port: 4004 }).then(({ url }) => {

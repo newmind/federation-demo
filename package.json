@@ -17,6 +17,11 @@
   },
   "dependencies": {
     "@apollo/gateway": "latest",
+    "@opentelemetry/api": "^1.0.3",
+    "@opentelemetry/core": "^0.22.0",
+    "@opentelemetry/instrumentation-express": "^0.22.0",
+    "@opentelemetry/instrumentation-http": "^0.22.0",
+    "@opentelemetry/node": "^0.22.0",
     "apollo-server": "latest",
     "graphql": "^15"
   }
