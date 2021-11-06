@@ -1,8 +1,10 @@
-require('./open-telemetry');
+// require('./open-telemetry');
 require('newrelic');
+const plugin = require('@newrelic/apollo-server-plugin')
 
 const { ApolloServer, gql } = require("apollo-server");
 const { buildFederatedSchema } = require("@apollo/federation");
+const { debug } = require('newrelic/lib/shimmer');
 
 const typeDefs = gql`
   type Review @key(fields: "id") {
@@ -54,8 +56,12 @@ const server = new ApolloServer({
     {
       typeDefs,
       resolvers
-    }
-  ])
+    },
+
+  ]),
+
+  debug: true,
+  plugins: [plugin],
 });
 
 server.listen({ port: 4002 }).then(({ url }) => {

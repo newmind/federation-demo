@@ -1,5 +1,6 @@
-require('./open-telemetry');
+// require('./open-telemetry');
 require('newrelic');
+const plugin = require('@newrelic/apollo-server-plugin')
 
 const { ApolloServer, gql } = require("apollo-server");
 const { buildFederatedSchema } = require("@apollo/federation");
@@ -39,6 +40,7 @@ const server = new ApolloServer({
     }
   ]),
   debug: true,
+  plugins: [plugin],
 });
 
 server.listen({ port: 4004 }).then(({ url }) => {

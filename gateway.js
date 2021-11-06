@@ -1,5 +1,6 @@
-require('./open-telemetry');
+// require('./open-telemetry');
 require('newrelic');
+const plugin = require('@newrelic/apollo-server-plugin')
 
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
@@ -40,6 +41,7 @@ const gateway = new ApolloGateway({
     subscriptions: false,
 
     debug: true,
+    plugins: [plugin],
   });
 
   server.listen().then(({ url }) => {
