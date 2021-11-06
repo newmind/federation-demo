@@ -24,6 +24,7 @@
     "@opentelemetry/instrumentation-http": "^0.22.0",
     "@opentelemetry/node": "^0.22.0",
     "apollo-server": "latest",
-    "graphql": "^15"
+    "graphql": "^15",
+    "newrelic": "^8.5.1"
   }
 }

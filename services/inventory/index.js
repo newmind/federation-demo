@@ -1,4 +1,5 @@
-require('./open-telemetry')
+require('./open-telemetry');
+require('newrelic');
 
 const { ApolloServer, gql } = require("apollo-server");
 const { buildFederatedSchema } = require("@apollo/federation");
